@@ -6,8 +6,19 @@ gcloud storage buckets create gs://my_bucket_map_reduce --project=alpine-keep-36
 ```
 
 Copier les données du gs://public_lddm_data/page_links_en.nt.bz2 vers mon bucket
+```
 gsutil gs://public_lddm_data/page_links_en.nt.bz2  gs://my_bucket_map_reduce
-![image](https://user-images.githubusercontent.com/35890810/195428435-2e277d44-9ebb-4128-a9f2-8af51d736dbd.png)
-
-Commande de création du cluster avec 2 workers 
-
+```
+Importer le code PIG : Dataproc.py et celui de Pyspark 
+Commande de création du cluster avec 2 workers et puis on va varier le nombre de workers par la suite 
+```
+gcloud dataproc clusters create cluster-a35a --enable-component-gateway --region europe-west1 --zone europe-west1-c --master-machine-type n1-standard-4 --master-boot-disk-size 500 --num-workers 2 --worker-machine-type n1-standard-4 --worker-boot-disk-size 500 --image-version 2.0-debian10 --project alpine-keep-363216
+```
+Commande pour lancer le job avec pig:
+```
+ gcloud dataproc jobs submit pig --region europe-west1 --cluster cluster-a35a -f gs://my_bucket_map_reduce/dataproc.py
+```
+commande pour lancer le job avec pyspark
+```
+gcloud dataproc jobs submit pyspark --region europe-west1 --cluster cluster-a35a gs://my_bucket_map_reduce/pagerank-notype.py  -- gs://my_bucket_map_reduce/page_links_en.nt.bz2  3
+```
