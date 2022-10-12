@@ -24,10 +24,10 @@ gcloud dataproc jobs submit pyspark --region europe-west1 --cluster cluster-a35a
 ```
 ## Resultat de la durée d'éxecution :
 
-              PIG            | Pyspark
-              -------------  | -------------
-    2 noeuds | 	49 min 37 s  | 44 min 15 s
-    3 noeuds |  39 min 47 s  | 39 min 42 s
-    4 noeuds |  35 min 14 s  | 35 min 45 s
-    5 noeuds |  35 min 28 s  | 38 min 53 s
+              PIG           |   Pyspark
+              ------------- | -------------
+   2 noeuds | 	49 min 37 s  | 44 min 15 s
+   3 noeuds |  39 min 47 s  | 39 min 42 s
+   4 noeuds |  35 min 14 s  | 35 min 45 s
+   5 noeuds |  35 min 28 s  | 38 min 53 s
        
